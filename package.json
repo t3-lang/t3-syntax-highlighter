@@ -2,7 +2,7 @@
   "name": "t3-language",
   "displayName": "T3 - Simplified TypeScript Syntax",
   "description": "Syntax highlighting for T3, a cleaner TypeScript variant with parenthesis-free control structures",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "publisher": "falsy",
   "author": "Falsy",
   "license": "Apache License 2.0",
