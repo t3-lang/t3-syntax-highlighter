@@ -1,0 +1,33 @@
+{
+  "name": "t3-language",
+  "displayName": "T3 - Simplified TypeScript Syntax",
+  "description": "Syntax highlighting for T3, a cleaner TypeScript variant with parenthesis-free control structures",
+  "version": "0.1.1",
+  "publisher": "falsy",
+  "author": "Falsy",
+  "license": "Apache License 2.0",
+  "icon": "images/t3-icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/t3-lang/t3-syntax-highlighter.git"
+  },
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "contributes": {
+    "languages": [{
+      "id": "t3",
+      "aliases": ["T3", "t3"],
+      "extensions": [".t3"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "t3",
+      "scopeName": "source.t3",
+      "path": "./syntaxes/t3.tmLanguage.json",
+      "embeddedLanguages": {
+        "meta.embedded.block.ts": "typescript"
+      }
+    }]
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "name": "T3",
+  "scopeName": "source.t3",
+  "fileTypes": ["t3"],
+  "patterns": [
+    {
+      "include": "#t3-control-statements"
+    },
+    {
+      "include": "#t3-switch-statements"
+    },
+    {
+      "include": "#t3-comparisons"
+    },
+    {
+      "include": "#t3-ternary"
+    },
+    {
+      "include": "source.ts"
+    }
+  ],
+  "repository": {
+    "t3-control-statements": {
+      "patterns": [
+        {
+          "begin": "\\b(for)\\b\\s+([^{]+){",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.loop.t3" },
+            "2": { "patterns": [{ "include": "source.ts" }] }
+          },
+          "end": "}",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.block.t3" }
+          },
+          "patterns": [
+            {
+              "include": "source.ts"
+            }
+          ]
+        },
+        {
+          "begin": "\\b(while)\\b\\s+([^{]+){",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.loop.t3" },
+            "2": { "patterns": [{ "include": "source.ts" }] }
+          },
+          "end": "}",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.block.t3" }
+          },
+          "patterns": [
+            {
+              "include": "source.ts"
+            }
+          ]
+        },
+        {
+          "begin": "\\b(if)\\b\\s+([^{]+){",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.conditional.t3" },
+            "2": { "patterns": [{ "include": "source.ts" }] }
+          },
+          "end": "}",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.block.t3" }
+          },
+          "patterns": [
+            {
+              "include": "source.ts"
+            }
+          ]
+        },
+        {
+          "begin": "\\b(else\\s+if)\\b\\s+([^{]+){",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.conditional.t3" },
+            "2": { "patterns": [{ "include": "source.ts" }] }
+          },
+          "end": "}",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.block.t3" }
+          },
+          "patterns": [
+            {
+              "include": "source.ts"
+            }
+          ]
+        },
+        {
+          "begin": "\\b(else)\\b\\s*{",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.conditional.t3" }
+          },
+          "end": "}",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.block.t3" }
+          },
+          "patterns": [
+            {
+              "include": "source.ts"
+            }
+          ]
+        }
+      ]
+    },
+    "t3-switch-statements": {
+      "patterns": [
+        {
+          "begin": "\\b(switch)\\b\\s+([^{(\\s]+)\\s*",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.switch.t3" },
+            "2": { "name": "variable.other.t3" }
+          },
+          "end": "(?<=\\})",
+          "patterns": [
+            {
+              "begin": "\\{",
+              "beginCaptures": {
+                "0": { "name": "punctuation.definition.block.t3" }
+              },
+              "end": "\\}",
+              "endCaptures": {
+                "0": { "name": "punctuation.definition.block.t3" }
+              },
+              "patterns": [
+                {
+                  "include": "#t3-case-clause"
+                },
+                {
+                  "include": "#t3-default-clause"
+                },
+                {
+                  "include": "source.ts"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "t3-case-clause": {
+      "patterns": [
+        {
+          "begin": "\\b(case)\\b\\s+",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.case.t3" }
+          },
+          "end": ":",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.section.case-statement.t3" }
+          },
+          "patterns": [
+            {
+              "include": "source.ts"
+            }
+          ]
+        },
+        {
+          "begin": "(?<=case\\s+[^:]+:)\\s*\\{",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.block.t3" }
+          },
+          "end": "\\}",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.block.t3" }
+          },
+          "patterns": [
+            {
+              "include": "source.ts"
+            }
+          ]
+        }
+      ]
+    },
+    "t3-default-clause": {
+      "patterns": [
+        {
+          "match": "\\b(default)\\b\\s*(:)",
+          "captures": {
+            "1": { "name": "keyword.control.default.t3" },
+            "2": { "name": "punctuation.definition.section.case-statement.t3" }
+          }
+        }
+      ]
+    },
+    "t3-comparisons": {
+      "patterns": [
+        {
+          "name": "keyword.operator.comparison.t3",
+          "match": "==|!="
+        }
+      ]
+    },
+    "t3-ternary": {
+      "patterns": [
+        {
+          "match": "(\\?)(\\s*)(.*?)(:)",
+          "captures": {
+            "1": { "name": "keyword.operator.ternary.t3" },
+            "3": { "patterns": [{ "include": "source.ts" }] },
+            "4": { "name": "keyword.operator.ternary.t3" }
+          }
+        }
+      ]
+    }
+  }
+}
