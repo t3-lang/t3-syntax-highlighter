@@ -2,7 +2,7 @@
   "name": "t3-language",
   "displayName": "T3 - Simplified TypeScript Syntax",
   "description": "Syntax highlighting for T3, a cleaner TypeScript variant with parenthesis-free control structures",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "falsy",
   "author": "Falsy",
   "license": "Apache License 2.0",
@@ -19,7 +19,11 @@
       "id": "t3",
       "aliases": ["T3", "t3"],
       "extensions": [".t3"],
-      "configuration": "./language-configuration.json"
+      "configuration": "./language-configuration.json",
+      "icon": {
+      "light": "./images/t3-file-icon.svg",
+      "dark": "./images/t3-file-icon.svg"
+    }
     }],
     "grammars": [{
       "language": "t3",
