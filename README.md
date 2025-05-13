@@ -1,6 +1,6 @@
 # T3 Language Support for VS Code
 
-This extension provides syntax highlighting for the T3 language, which transpiles to TypeScript.
+Syntax highlighting for T3 and T3X files in Visual Studio Code.
 
 ## Features
 
@@ -10,59 +10,51 @@ This extension provides syntax highlighting for the T3 language, which transpile
   - Parenthesis-free `switch` statements
   - Equality operators (`==`, `!=`) that transpile to TypeScript's strict equality
 
+## Usage
+
+After installation, VS Code will automatically apply T3 syntax highlighting to files with .t3 and .t3x extensions.
+
+## File extensions
+
+- Use .t3 for regular T3 files
+- Use .t3x for T3 files containing JSX/React components
+
 ## Example
 
-T3 code:
+### Regular T3 file (.t3):
 
 ```t3
-// T3 style switch statement
-const value = 42
-switch value {
-  case 0: {
-    console.log("Zero")
-    break
-  }
-  case 42: {
-    console.log("The answer")
-    break
-  }
-  default: {
-    console.log("Something else")
-  }
+if count > 10 {
+  console.log("Count is too high")
 }
 
-// T3 style for loop
-for let i=0; i<10; i++ {
-  if i % 2 == 0 {
-    console.log(`${i} is even`)
+switch status {
+  case "loading": {
+    showSpinner()
+    break
+  }
+  case "error": {
+    showError()
+    break
   }
 }
 ```
 
-Transpiled TypeScript:
+### T3X file with React components (.t3x):
 
-```typescript
-// T3 style switch statement
-const value = 42
-switch (value) {
-  case 0: {
-    console.log("Zero")
-    break
-  }
-  case 42: {
-    console.log("The answer")
-    break
-  }
-  default: {
-    console.log("Something else")
-  }
-}
+```t3x
+function Button(props: { label: string }) {
+  const [count, setCount] = useState(0)
 
-// T3 style for loop
-for (let i = 0; i < 10; i++) {
-  if (i % 2 === 0) {
-    console.log(`${i} is even`)
+  if count > 10 {
+    return <span>Too many clicks!</span>
   }
+
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      {props.label} ({count})
+    </button>
+  )
 }
 ```
 
@@ -75,42 +67,6 @@ for (let i = 0; i < 10; i++) {
 3. Search for "T3 Language"
 4. Click Install
 
-## T3 Language Features
-
-T3 provides a simpler, more concise syntax for TypeScript, with these key differences:
-
-1. **Control structures without parentheses**
-
-   ```t3
-   if condition {
-     // code
-   }
-   ```
-
-2. **Switch statements without parentheses**
-
-   ```t3
-   switch value {
-     // cases
-   }
-   ```
-
-3. **Equality operators**
-
-   ```t3
-   // In T3
-   if x == y {
-     // code
-   }
-
-   // Transpiles to TypeScript
-   if (x === y) {
-     // code
-   }
-   ```
-
-4. All other TypeScript features (types, interfaces, etc.) work as expected.
-
 ## Requirements
 
 - VS Code 1.100.0 or newer
@@ -120,6 +76,10 @@ T3 provides a simpler, more concise syntax for TypeScript, with these key differ
 Please report any issues on the GitHub repository.
 
 ## Release Notes
+
+### 0.1.5
+
+- Support for `.t3x`
 
 ### 0.1.0
 

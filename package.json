@@ -2,7 +2,19 @@
   "name": "t3-language",
   "displayName": "T3 Language for VS Code",
   "description": "Syntax highlighting for T3, a cleaner TypeScript variant with parenthesis-free control structures",
-  "version": "0.1.4",
+  "version": "0.1.5",
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "t3",
+    "t3x",
+    "t3lang",
+    "typescript",
+    "tsx",
+    "syntax",
+    "highlighting"
+  ],
   "publisher": "falsy",
   "author": "Falsy",
   "license": "Apache License 2.0",
@@ -18,7 +30,7 @@
     "languages": [{
       "id": "t3",
       "aliases": ["T3", "t3"],
-      "extensions": [".t3"],
+      "extensions": [".t3", ".t3x"],
       "configuration": "./language-configuration.json",
       "icon": {
       "light": "./images/t3-file-icon.svg",
@@ -30,7 +42,7 @@
       "scopeName": "source.t3",
       "path": "./syntaxes/t3.tmLanguage.json",
       "embeddedLanguages": {
-        "meta.embedded.block.ts": "typescript"
+        "meta.embedded.block.tsx": "tsx"
       }
     }]
   }
